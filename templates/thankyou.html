@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Thank You, {{ name }}!</h1>
+<p>You have been successfully subscribed to our newsletter.</p>
+<a href="{{ url_for('home') }}" class="back-link">← Go back</a>
+{% endblock %}
