@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Subscribers</h1>
+
+<div class="filter-bar">
+    <span>Filter by date:</span>
+    <a href="{{ url_for('subscriber_list') }}" class="filter-btn {% if not selected_date %}active{% endif %}">All</a>
+    {% for date in dates %}
+        <a href="{{ url_for('subscriber_list') }}?date={{ date }}" class="filter-btn {% if selected_date == date %}active{% endif %}">{{ date }}</a>
+    {% endfor %}
+</div>
+
+<ul class="subscriber-list">
+    {% for sub in subscribers %}
+        <li class="subscriber-item">
+            <strong>{{ sub.name }}</strong> ({{ sub.email }})<br>
+            <small>Subscribed on: {{ sub.date }}</small>
+        </li>
+    {% else %}
+        <p>No subscribers found for selected date.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
